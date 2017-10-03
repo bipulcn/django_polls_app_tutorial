@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/polls/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/polls/scaliton.css' %}">
+<div class="container">
+	<div class="content">
+		<div class="column twelve">
+{% if latest_question_list %}
+	<ul>
+		{% for question in latest_question_list %}
+			<li>
+				<!-- <a href="/polls/{{question.id}}/">{{question.question_text}}</a> -->
+				<!--  url 'detail' question.id -->
+				<a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>No polls are available.</p>
+{% endif %}
+</div>
+</div>
+</div>
